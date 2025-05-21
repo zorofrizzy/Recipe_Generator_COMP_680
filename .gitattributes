@@ -1,0 +1,12 @@
+# DB backup – LFS, lockable, no merges
+Database_backup/* filter=lfs diff=lfs merge=lfs -text
+Database_backup/* lockable
+
+# Large CSV datasets – LFS
+Dataset/*.csv filter=lfs diff=lfs merge=lfs -text
+Preprocessed_Data/*.csv filter=lfs diff=lfs merge=lfs -text
+# Index artefacts – never merged, always rebuilt
+Index/* -diff -text merge=ours
+# Jupyter notebooks renderable on GitHub
+*.ipynb text
+Index/* filter=lfs diff=lfs merge=lfs -text
